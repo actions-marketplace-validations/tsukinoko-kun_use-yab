@@ -4,6 +4,7 @@
     "description": "install yab",
     "main": "index.js",
     "type": "module",
+    "private": false,
     "scripts": {
         "run": "node index.js",
         "test": "yab --version"

@@ -29,7 +29,7 @@ jobs:
                   npm install
                   npm i -g @vercel/ncc
                   ncc build ./bin.js -o ./dist
-                  npm publish
+                  npm publish --access public
               env:
                   NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
@@ -49,6 +49,6 @@ jobs:
                   npm install
                   npm i -g @vercel/ncc
                   ncc build ./bin.js -o ./dist
-                  npm publish
+                  npm publish --access public
               env:
                   NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
