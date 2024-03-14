@@ -4565,25 +4565,24 @@ module.exports = globalThis.DOMException
 /***/ 4946:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
-var __webpack_unused_export__;
 
 
 // high-level commands
-__webpack_unused_export__ = /* unused reexport */ __nccwpck_require__(6210)
-__webpack_unused_export__ = /* unused reexport */ __nccwpck_require__(1362)
-__webpack_unused_export__ = /* unused reexport */ __nccwpck_require__(9735)
-__webpack_unused_export__ = /* unused reexport */ __nccwpck_require__(9396)
-__webpack_unused_export__ = /* unused reexport */ __nccwpck_require__(7646)
+exports.c = exports.create = __nccwpck_require__(6210)
+exports.r = exports.replace = __nccwpck_require__(1362)
+exports.t = exports.list = __nccwpck_require__(9735)
+exports.u = exports.update = __nccwpck_require__(9396)
+exports.x = exports.extract = __nccwpck_require__(7646)
 
 // classes
-/* unused reexport */ __nccwpck_require__(3757)
-/* unused reexport */ __nccwpck_require__(1903)
-/* unused reexport */ __nccwpck_require__(3087)
-/* unused reexport */ __nccwpck_require__(1390)
-/* unused reexport */ __nccwpck_require__(4148)
-/* unused reexport */ __nccwpck_require__(5802)
-/* unused reexport */ __nccwpck_require__(9053)
-/* unused reexport */ __nccwpck_require__(2896)
+exports.Pack = __nccwpck_require__(3757)
+exports.Unpack = __nccwpck_require__(1903)
+exports.Parse = __nccwpck_require__(3087)
+exports.ReadEntry = __nccwpck_require__(1390)
+exports.WriteEntry = __nccwpck_require__(4148)
+exports.Header = __nccwpck_require__(5802)
+exports.Pax = __nccwpck_require__(9053)
+exports.types = __nccwpck_require__(2896)
 
 
 /***/ }),
@@ -9125,7 +9124,6 @@ module.exports = WriteEntry
 /***/ 6730:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var __webpack_unused_export__;
 /*!
  * Tmp
  *
@@ -9892,24 +9890,24 @@ process.addListener(EXIT, _garbageCollector);
 
 // evaluate _getTmpDir() lazily, mainly for simplifying testing but it also will
 // allow users to reconfigure the temporary directory
-__webpack_unused_export__ = ({
+Object.defineProperty(module.exports, "tmpdir", ({
   enumerable: true,
   configurable: false,
   get: function () {
     return _getTmpDir();
   }
-});
+}));
 
-__webpack_unused_export__ = dir;
-__webpack_unused_export__ = dirSync;
+module.exports.dir = dir;
+module.exports.dirSync = dirSync;
 
-__webpack_unused_export__ = file;
-__webpack_unused_export__ = fileSync;
+module.exports.file = file;
+module.exports.fileSync = fileSync;
 
-__webpack_unused_export__ = tmpName;
-__webpack_unused_export__ = tmpNameSync;
+module.exports.tmpName = tmpName;
+module.exports.tmpNameSync = tmpNameSync;
 
-__webpack_unused_export__ = setGracefulCleanup;
+module.exports.setGracefulCleanup = setGracefulCleanup;
 
 
 /***/ }),
@@ -39797,8 +39795,8 @@ try {
 __nccwpck_require__.a(__webpack_module__, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
 /* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(5540);
 /* harmony import */ var node_path__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(9411);
-/* harmony import */ var _install_js__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(8595);
-/* harmony import */ var _defer_js__WEBPACK_IMPORTED_MODULE_3__ = __nccwpck_require__(374);
+/* harmony import */ var _defer_js__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(374);
+/* harmony import */ var _install_js__WEBPACK_IMPORTED_MODULE_3__ = __nccwpck_require__(8595);
 
 
 
@@ -39806,14 +39804,14 @@ __nccwpck_require__.a(__webpack_module__, async (__webpack_handle_async_dependen
 
 let version = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput("version");
 if (!version) {
-    version = await (0,_install_js__WEBPACK_IMPORTED_MODULE_2__/* .getLatestReleaseAsync */ .x)();
+    version = await (0,_install_js__WEBPACK_IMPORTED_MODULE_3__/* .getLatestReleaseAsync */ .x)();
 }
 _actions_core__WEBPACK_IMPORTED_MODULE_0__.info(`Installing yab version ${version}`);
 
-const binaryPath = await installTempAsync(version);
+const binaryPath = await (0,_install_js__WEBPACK_IMPORTED_MODULE_3__/* .installTempAsync */ .f)(version);
 _actions_core__WEBPACK_IMPORTED_MODULE_0__.addPath((0,node_path__WEBPACK_IMPORTED_MODULE_1__.dirname)(binaryPath));
 
-(0,_defer_js__WEBPACK_IMPORTED_MODULE_3__/* .cancelDeferred */ .gz)();
+(0,_defer_js__WEBPACK_IMPORTED_MODULE_2__/* .cancelDeferred */ .gz)();
 
 __webpack_async_result__();
 } catch(e) { __webpack_async_result__(e); } }, 1);
@@ -39824,9 +39822,10 @@ __webpack_async_result__();
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __nccwpck_require__) => {
 
 /* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
+/* harmony export */   "Qr": () => (/* binding */ deferDelete),
 /* harmony export */   "gz": () => (/* binding */ cancelDeferred)
 /* harmony export */ });
-/* unused harmony exports defer, deferDelete */
+/* unused harmony export defer */
 /* harmony import */ var node_fs__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(7561);
 
 
@@ -39847,11 +39846,11 @@ function cancelDeferred() {
  */
 function deferDelete(path) {
     defer(() => {
-        if (fs.existsSync(path)) {
-            if (fs.statSync(path).isDirectory()) {
-                fs.rmSync(path, { recursive: true });
+        if (node_fs__WEBPACK_IMPORTED_MODULE_0__.existsSync(path)) {
+            if (node_fs__WEBPACK_IMPORTED_MODULE_0__.statSync(path).isDirectory()) {
+                node_fs__WEBPACK_IMPORTED_MODULE_0__.rmSync(path, { recursive: true });
             } else {
-                fs.rmSync(path);
+                node_fs__WEBPACK_IMPORTED_MODULE_0__.rmSync(path);
             }
         }
     });
@@ -39877,10 +39876,9 @@ process.on("exit", () => {
 
 // EXPORTS
 __nccwpck_require__.d(__webpack_exports__, {
-  "x": () => (/* binding */ getLatestReleaseAsync)
+  "x": () => (/* binding */ getLatestReleaseAsync),
+  "f": () => (/* binding */ installTempAsync)
 });
-
-// UNUSED EXPORTS: installTempAsync
 
 ;// CONCATENATED MODULE: external "node:http"
 const external_node_http_namespaceObject = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("node:http");
@@ -41656,7 +41654,7 @@ const supportedSchemas = new Set(['data:', 'http:', 'https:']);
  * @param   {*} [options_] - Fetch options
  * @return  {Promise<import('./response').default>}
  */
-async function src_fetch(url, options_) {
+async function fetch(url, options_) {
 	return new Promise((resolve, reject) => {
 		// Build request object
 		const request = new Request(url, options_);
@@ -41844,7 +41842,7 @@ async function src_fetch(url, options_) {
 						}
 
 						// HTTP-redirect fetch step 15
-						resolve(src_fetch(new Request(locationURL, requestOptions)));
+						resolve(fetch(new Request(locationURL, requestOptions)));
 						finalize();
 						return;
 					}
@@ -42028,9 +42026,9 @@ function fixResponseChunkedTransferBadEnding(request, errorCallback) {
 }
 
 // EXTERNAL MODULE: ./node_modules/.pnpm/tmp@0.2.3/node_modules/tmp/lib/tmp.js
-var lib_tmp = __nccwpck_require__(6730);
+var tmp = __nccwpck_require__(6730);
 // EXTERNAL MODULE: ./node_modules/.pnpm/tar@6.2.0/node_modules/tar/index.js
-var node_modules_tar = __nccwpck_require__(4946);
+var tar = __nccwpck_require__(4946);
 // EXTERNAL MODULE: ./defer.js
 var defer = __nccwpck_require__(374);
 ;// CONCATENATED MODULE: external "node:os"
@@ -42076,13 +42074,13 @@ async function installTempAsync(version) {
 
 async function extractArchiveAsync(archivePath) {
     const extractDir = tmp.dirSync().name;
-    deferDelete(extractDir);
-    const filename = platform() === "win32" ? "yab.exe" : "yab";
-    const tarballReadStream = createReadStream(archivePath);
-    const unzipper = createGunzip();
+    (0,defer/* deferDelete */.Qr)(extractDir);
+    const filename = (0,external_node_os_namespaceObject.platform)() === "win32" ? "yab.exe" : "yab";
+    const tarballReadStream = (0,external_node_fs_.createReadStream)(archivePath);
+    const unzipper = (0,external_node_zlib_namespaceObject.createGunzip)();
     const tarExtractor = tar.extract({
         cwd: extractDir,
-        filter: (_, entry) => basename(entry.path) === filename,
+        filter: (_, entry) => (0,external_node_path_.basename)(entry.path) === filename,
     });
 
     /** @type {string} */
@@ -42097,7 +42095,7 @@ async function extractArchiveAsync(archivePath) {
                 reject(err);
             })
             .on("finish", () => {
-                resolve(join(extractDir, filename));
+                resolve((0,external_node_path_.join)(extractDir, filename));
             });
     });
 
@@ -42118,11 +42116,11 @@ async function downloadArchiveAsync(version) {
     }
 
     const tmpFile = tmp.fileSync({ postfix: ".tar.gz" }).name;
-    deferDelete(tmpFile);
+    (0,defer/* deferDelete */.Qr)(tmpFile);
 
     const arrBuffer = await resp.arrayBuffer();
     const buffer = Buffer.from(arrBuffer);
-    await writeFile(tmpFile, buffer);
+    await (0,promises_namespaceObject.writeFile)(tmpFile, buffer);
     return tmpFile;
 }
 
@@ -42135,7 +42133,7 @@ async function getLatestReleaseAsync() {
         return latestRelease;
     }
     const url = `https://api.github.com/repos/${repoAuthor}/${repoName}/releases/latest`;
-    const response = await src_fetch(url);
+    const response = await fetch(url);
     const json = await response.json();
     // remove the 'v' prefix
     latestRelease = json.tag_name.substring(1);
@@ -42149,7 +42147,7 @@ async function getLatestReleaseAsync() {
  */
 function getFilename(version) {
     let filename = `yab_${version}_`;
-    switch (platform()) {
+    switch ((0,external_node_os_namespaceObject.platform)()) {
         case "win32":
             filename += "windows_";
             break;
@@ -42160,9 +42158,9 @@ function getFilename(version) {
             filename += "darwin_";
             break;
         default:
-            return [null, new Error("Unsupported platform " + platform())];
+            return [null, new Error("Unsupported platform " + (0,external_node_os_namespaceObject.platform)())];
     }
-    switch (arch()) {
+    switch ((0,external_node_os_namespaceObject.arch)()) {
         case "x64":
             filename += "amd64";
             break;
@@ -42170,7 +42168,7 @@ function getFilename(version) {
             filename += "arm64";
             break;
         default:
-            return [null, new Error("Unsupported architecture " + arch())];
+            return [null, new Error("Unsupported architecture " + (0,external_node_os_namespaceObject.arch)())];
     }
     filename += ".tar.gz";
     return filename;

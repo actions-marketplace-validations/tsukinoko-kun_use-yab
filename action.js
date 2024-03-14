@@ -1,7 +1,7 @@
 import * as core from "@actions/core";
 import { dirname } from "node:path";
-import { getLatestReleaseAsync } from "./install.js";
 import { cancelDeferred } from "./defer.js";
+import { getLatestReleaseAsync, installTempAsync } from "./install.js";
 
 let version = core.getInput("version");
 if (!version) {
