@@ -2,4 +2,4 @@ name: "Use Yab"
 description: "Install the Yab build tool."
 runs:
   using: "node20"
-  main: "dist/index.js"
+  main: "action/index.js"
