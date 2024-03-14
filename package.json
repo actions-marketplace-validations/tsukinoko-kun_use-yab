@@ -1,0 +1,31 @@
+{
+    "name": "@Frank-Mayer/use-yab",
+    "version": "1.0.0",
+    "description": "install yab",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "run": "node index.js",
+        "test": "yab --version"
+    },
+    "bin": {
+        "yab": "./bin.js"
+    },
+    "keywords": [
+        "yab",
+        "build",
+        "build system",
+        "yab build"
+    ],
+    "author": "Frank Mayer",
+    "license": "MIT",
+    "dependencies": {
+        "node-fetch": "^3.3.2",
+        "tar": "^6.2.0",
+        "tmp": "^0.2.3"
+    },
+    "devDependencies": {
+        "@types/tar": "^6.1.11",
+        "@types/tmp": "^0.2.6"
+    }
+}
