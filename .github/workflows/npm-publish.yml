@@ -4,32 +4,51 @@
 name: Node.js Package
 
 on:
-  push:
-    branches: ["main"]
-  workflow_dispatch:
+    push:
+        branches: ["main"]
+    workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - run: npm install
-      - run: npm link
-      - run: npm run test
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: ./
+            - run: yab --version
 
-  publish-npm:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          registry-url: https://registry.npmjs.org/
-      - run: npm install
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+    publish-npm:
+        needs: test
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: 20
+                  registry-url: https://registry.npmjs.org/
+            - run: |
+                  npm install
+                  npm i -g @vercel/ncc
+                  ncc build ./bin.js -o ./dist
+                  npm publish
+              env:
+                  NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+
+    publish-gpr:
+        needs: test
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+            packages: write
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: 20
+                  registry-url: https://npm.pkg.github.com/
+            - run: |
+                  npm install
+                  npm i -g @vercel/ncc
+                  ncc build ./bin.js -o ./dist
+                  npm publish
+              env:
+                  NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}

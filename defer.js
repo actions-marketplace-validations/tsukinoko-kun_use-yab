@@ -6,6 +6,10 @@ export function defer(fn) {
     register.push(fn);
 }
 
+export function cancelDeferred() {
+    register.length = 0;
+}
+
 /**
  * Delete a file or directory.
  * If the path is a directory, it will be removed recursively.

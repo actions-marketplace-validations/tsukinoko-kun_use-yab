@@ -1,0 +1,7 @@
+local yab = require("yab")
+yab.use("nodejs", "20.11.1")
+os.execute("npm install -g pnpm")
+os.execute("pnpm install")
+os.execute("npm i -g @vercel/ncc")
+os.execute("ncc build ./action.js -o ./action")
+os.execute("ncc build ./bin.js -o ./bin")

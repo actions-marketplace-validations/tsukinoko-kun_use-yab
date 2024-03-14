@@ -10,6 +10,7 @@ import { basename, join } from "node:path";
 
 const repoAuthor = "Frank-Mayer";
 const repoName = "yab";
+let latestRelease = null;
 
 /**
  * Install a specific version of yab to a temporary directory
@@ -20,6 +21,9 @@ const repoName = "yab";
 export async function installTempAsync(version) {
     if (!version || version === "latest") {
         version = await getLatestReleaseAsync();
+    } else if (version.startsWith("v")) {
+        // remove the 'v' prefix
+        version = version.substring(1);
     }
     const archivePath = await downloadArchiveAsync(version);
     const binaryPath = await extractArchiveAsync(archivePath);
@@ -82,12 +86,16 @@ async function downloadArchiveAsync(version) {
  * Get the latest release of yab
  * @returns {Promise<string>} version
  */
-async function getLatestReleaseAsync() {
+export async function getLatestReleaseAsync() {
+    if (latestRelease) {
+        return latestRelease;
+    }
     const url = `https://api.github.com/repos/${repoAuthor}/${repoName}/releases/latest`;
     const response = await fetch(url);
     const json = await response.json();
     // remove the 'v' prefix
-    return json.tag_name.substring(1);
+    latestRelease = json.tag_name.substring(1);
+    return latestRelease;
 }
 
 /**
