@@ -26,7 +26,6 @@ export async function getPathAsync() {
  * @returns {Promise<number>} exit code
  */
 export async function executeAsync(...args) {
-    console.log("execute", args);
     const yabPath = await getPathAsync();
     const proc = spawn(yabPath, args, {
         stdio: "inherit",
