@@ -24,7 +24,7 @@ jobs:
                   registry-url: https://registry.npmjs.org/
             - name: Use Yab
               uses: Frank-Mayer/use-yab@v1.0.0
-            - run: yab build
+            - run: yab run build
             - run: npm publish --access public
               env:
                   NODE_AUTH_TOKEN: ${{secrets.npm_token}}
@@ -43,7 +43,7 @@ jobs:
                   registry-url: https://npm.pkg.github.com/
             - name: Use Yab
               uses: Frank-Mayer/use-yab@v1.0.0
-            - run: yab build
+            - run: yab run build
             - run: npm publish --access public
               env:
                   NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
