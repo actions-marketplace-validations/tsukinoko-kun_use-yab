@@ -11,7 +11,7 @@ jobs:
         steps:
             - uses: actions/checkout@v3
             - uses: ./
-            - run: yab --version
+            - run: yab version
 
     publish-npm:
         needs: test
