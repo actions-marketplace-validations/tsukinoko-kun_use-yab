@@ -1,6 +1,6 @@
 {
     "name": "@frank-mayer/use-yab",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "install yab",
     "main": "index.js",
     "type": "module",
