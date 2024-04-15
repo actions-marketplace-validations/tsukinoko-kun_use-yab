@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 import tmp from "tmp";
-import tar from "tar";
+import { extract as tarExtract } from "tar";
 import { deferDelete } from "./defer.js";
 import { arch, platform } from "node:os";
 import { writeFile } from "node:fs/promises";
@@ -36,7 +36,7 @@ async function extractArchiveAsync(archivePath) {
     const filename = platform() === "win32" ? "yab.exe" : "yab";
     const tarballReadStream = createReadStream(archivePath);
     const unzipper = createGunzip();
-    const tarExtractor = tar.extract({
+    const tarExtractor = tarExtract({
         cwd: extractDir,
         filter: (_, entry) => basename(entry.path) === filename,
     });
