@@ -23,7 +23,7 @@ jobs:
                   node-version: 20
                   registry-url: https://registry.npmjs.org/
             - name: Use Yab
-              uses: tsukinoko-kun/use-yab@v1.0.0
+              uses: tsukinoko-kun/use-yab@v1.1.0
             - run: yab run build
             - run: npm publish --access public
               env:
@@ -42,7 +42,7 @@ jobs:
                   node-version: 20
                   registry-url: https://npm.pkg.github.com/
             - name: Use Yab
-              uses: Frank-Mayer/use-yab@v1.0.0
+              uses: tsukinoko-kun/use-yab@v1.1.0
             - run: yab run build
             - run: npm publish --access public
               env:

@@ -4,7 +4,7 @@
 
 ```yaml
 - name: Use Yab
-  uses: tsukinoko-kun/use-yab@v1
+  uses: tsukinoko-kun/use-yab@v1.1.3
 - name: Build
   run: yab build
 ```
