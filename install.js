@@ -8,7 +8,7 @@ import { createReadStream } from "node:fs";
 import { createGunzip } from "node:zlib";
 import { basename, join } from "node:path";
 
-const repoAuthor = "Frank-Mayer";
+const repoAuthor = "tsukinoko-kun";
 const repoName = "yab";
 let latestRelease = null;
 
@@ -67,7 +67,7 @@ async function extractArchiveAsync(archivePath) {
  */
 async function downloadArchiveAsync(version) {
     const filename = getFilename(version);
-    const url = `https://github.com/Frank-Mayer/yab/releases/download/v${version}/${filename}`;
+    const url = `https://github.com/tsukinoko-kun/yab/releases/download/v${version}/${filename}`;
     const resp = await fetch(url);
     if (!resp.ok) {
         throw new Error(`Failed to download yab from ${url}`);
